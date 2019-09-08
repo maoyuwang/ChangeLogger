@@ -11,6 +11,10 @@ A website for tracking changelogs.
 - A user center that allow users to subscribe.
 - Integrate RSS feed/Mail Notification / Text Notification / Slack Bot / Telegram Bot.
 
+## Running Flow
+
+![flow](flow.png)
+
 ## Tech Stack
 
 - Python3 + BeautifulSoup4
