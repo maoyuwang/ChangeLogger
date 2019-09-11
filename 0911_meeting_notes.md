@@ -5,29 +5,29 @@ General purpose and design: readme.md
 Consider two types of changelogs:
 ## 1.Several Internet Spider tailored to different Apps(hard-corded):
 ### DU
-IOS
-Mac OS
+IOS 
+Mac OS 
 ### YI
-Fire Fox
-Chrome
+Fire Fox 
+Chrome 
 ### WANG
-Telegram destop
-Telegram Macos
+Telegram destop 
+Telegram Macos 
 ### LING
-VScode
-Discard
+VScode 
+Discard 
 ## 2.Collect and process data
 ### Parent class
-1.Getwebsitehtml(html to string content)
-2.Dicttostring(process to Jason fie)
-Parent class function spec discussed
+1.Getwebsitehtml(html to string content) 
+2.Dicttostring(process to Jason fie) 
+Parent class function spec discussed 
 # Sprint2 design:
 ## Database design
-Jason format:
-“Version”: String
-“Time”: String
-“Content”:String
+Jason format: 
+â€œVersionâ€: String 
+â€œTimeâ€: String 
+â€œContentâ€:String 
 ## Github repository structure
-1.Doc & design
-2.Parser
-Each words in names needs to be capitalized
+1.Doc & design 
+2.Parser 
+Each words in names needs to be capitalized 
