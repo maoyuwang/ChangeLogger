@@ -3,6 +3,8 @@
 General purpose and design: readme.md
 # Sprint1 design:
 Consider two types of changelogs:
+1. with hyper links  
+2. flat context  
 ## 1.Several Internet Spider tailored to different Apps(hard-corded):
 ### DU
 IOS  
