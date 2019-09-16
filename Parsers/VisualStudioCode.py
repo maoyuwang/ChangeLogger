@@ -34,7 +34,7 @@ class VisualStudioCode(Parser):
         	features = version_contents.find('ul').find_all('li')
 
         	has_features = True
-        	check = features[0].findAll(text=True)
+        	check = features[0].find_all(text=True)
         	if len(check) != 2:
         		has_features = False
 
@@ -43,7 +43,7 @@ class VisualStudioCode(Parser):
         		if has_features == False:
         			break
         		
-        		feature = i.findAll(text=True)
+        		feature = i.find_all(text=True)
         		single_feature = ""
         		for txt in feature:
         			single_feature += txt
