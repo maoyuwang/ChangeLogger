@@ -1,30 +1,20 @@
 from Parsers.Parser import *
-
+import re
 
 class iOS(Parser):
-    @property
     def parse(self):
         HTML = getWebsite("https://support.apple.com/en-us/HT209084")
-
         soup = BeautifulSoup(HTML, "lxml")
 
-        DIV = soup.find('div ', attrs={"class": ""})
+        DIV = soup.find('div',attrs={"id":"sections"})
 
         parseResult = list()
 
-        versions = DIV.find('h2')
+        versions = DIV.find_all('h2')
+        print(versions)
 
-        P = DIV.find_all('p')
-        UL = DIV.fina_all('ul')
-        parseResult = list()
-        for i in range(0, len(versions)):
-            LI = UL[i]. find_all("li")
-            record = dict()
-            record['version'] = versions[i].text
-
-            parseResult.append(record)
-        return(getJSONStr(parseResult))
-
+        DIVs = DIV.find_all("div", {"id": re.compile("^\d{1,}$")})
+        print(DIVs[4].text)
 
 
 if __name__ == '__main__':
