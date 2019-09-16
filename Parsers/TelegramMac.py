@@ -1,8 +1,8 @@
 from Parsers.Parser import *
 
+
 class TelegramMac(Parser):
     def parse(self):
-
         # 获取网页源代码
         HTML = getWebsite("https://macos.telegram.org/")
 
@@ -21,15 +21,14 @@ class TelegramMac(Parser):
 
         # 循环遍历所有的 h3 和 ul 标签
         for i in range(0, len(H3)):
-
             # 找到当前 ul 里面所有的 li 标签
             LI = UL[i].find_all("li")
 
             # 新建一个字典储存本次更新的详情
             record = dict()
-            record['version'] = H3[i].text.replace("v ","").split(" ")[0]
+            record['version'] = H3[i].text.replace("v ", "").split(" ")[0]
             record['time'] = H3[i].text.replace("v ", "").split(" ")[1]
-            record['content'] = [li.text.replace("\n","") for li in LI]
+            record['content'] = [li.text.replace("\n", "") for li in LI]
 
             # 将本次更新添加至最终解析结果中去
             parseResult.append(record)

@@ -13,7 +13,7 @@ class Parser(Thread):
         """
         Details on thread running.
         """
-        self.result = self.parse()
+        self.result = self.parse
 
     def parse(self):
         """
