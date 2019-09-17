@@ -4,7 +4,7 @@ class Nginx(Parser):
 
     def parse(self):
 
-    	#get the website's source code
+        #get the website's source code
         HTML = getWebsite("http://nginx.org/en/CHANGES")
 
         #put the source code into soup object
