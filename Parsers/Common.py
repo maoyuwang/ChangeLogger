@@ -1,7 +1,10 @@
 import json
 import sys
 from urllib import request
+import urllib
+import ssl
 from bs4 import BeautifulSoup
+
 
 def getJSONStr(obj):
     """
@@ -22,8 +25,18 @@ def getWebsite(url):
     :param url: The url to visit and get source code.
     :return:    The string of raw HTML source code for given web page.
     """
+    ssl._create_default_https_context = ssl._create_unverified_context
     try:
-        result = request.urlopen(url,timeout=5).read().decode('utf-8')
+        req = urllib.request.Request(
+            url,
+            data=None,
+            headers={
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
+            }
+        )
+
+        reqResult = request.urlopen(req,timeout=5)
+        result = reqResult.read().decode('utf-8')
     except:
         result = None
         print("ERROR: Failed to visit '{}'!".format(url), file=sys.stderr)
