@@ -10,12 +10,12 @@ class OpenJDK(Parser):
         anchor = DIV.find_all('div', attrs={"class": "anchor"})
         H2=list()
         for x in anchor:
-            H2=H2+anchor.finad_all("h2")
+            H2=H2+x.find_all('h2')
 
         Margins = DIV.find_all('div', attrs={"class": "margin-bottom"})
         UL=list()
         for x in Margins:
-            UL=UL+anchor.finad_all("ul")
+            UL=UL+x.find_all('ul')
 
         # 新建空列表准备储存解析结果
         parseResult = list()
@@ -30,7 +30,7 @@ class OpenJDK(Parser):
             record = dict()
             record['version'] = H2[i].text.replace("OpenJDK ", "").split(" ")[0]
             # 没有时间
-            #record['time'] = H2[i].text.replace("Fixed in ", "").split(" ")[1]
+            record['time'] = "null"
             record['content'] = [li.text.replace("\n", "") for li in LI]
 
             # 将本次更新添加至最终解析结果中去
