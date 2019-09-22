@@ -19,8 +19,8 @@ class Curl(Parser):
             # 新建一个字典储存本次更新的详情
             record = dict()
 
-            record['version'] = H3[i].text.replace("Fixed in ", "").split(" ")[0]
-            record['time'] = H3[i].text.replace("Fixed in ", "").split(" ")[1]
+            record['version'] = H3[i].text.replace("Fixed in ", "").split(" ")[1]
+            record['time'] = None
             record['content'] = [li.text.replace("\n", "") for li in LI]
 
             # 将本次更新添加至最终解析结果中去
@@ -34,6 +34,7 @@ if __name__ == '__main__':
     test = Curl()
     test.start()
     test.join()
+    print(test.result)
     print(test)
 
 
