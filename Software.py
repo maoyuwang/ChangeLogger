@@ -10,3 +10,7 @@ class Software(object):
         self.Name == other.Name and \
         self.Description == other.Description and \
         self.Icon == other.Icon
+
+    def __str__(self):
+        string = "ID:\t{}\nNAME:\t{}\nIcon:\t{}".format(self.ID,self.Name,self.Icon)
+        return string
