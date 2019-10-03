@@ -3,7 +3,7 @@ import pymysql
 
 class MySQL():
     def __init__(self):
-        self.connect()
+        self.conn = None
 
     def connect(self):
         self.conn=pymysql.connect(host=DB_HOST, port=DB_PORT, user=DB_USER, password=DB_PASSWD,database=DB_NAME)
@@ -19,12 +19,9 @@ class MySQL():
     def insert(self,query):
         try:
             cursor = self.conn.cursor()
-
             cursor.execute(query)
-
             self.conn.commit()
         except:
-
             self.conn.rollback()
 
 
