@@ -1,1 +1,1 @@
-__all__ = ["Curl","iOS","Nginx","OpenJDK","TelegramMac","TelegramDesktop","VisualStudioCode"]
+__all__ = ["Curl","Nginx","OpenJDK","TelegramMac","TelegramDesktop","VisualStudioCode"]
