@@ -8,11 +8,10 @@ class Nginx(Parser):
         HTML = getWebsite("http://nginx.org/en/CHANGES")
 
         #put the source code into soup object
-        Updates = BeautifulSoup(HTML, "lxml")
+        #Updates = BeautifulSoup(HTML, "lxml")
 
         parseResult = list()
 
-        keyword = "Changes with nginx"
         all_version_and_date = re.findall("(Changes with nginx.*)\n",HTML)
 
         for version_and_date in all_version_and_date:
@@ -23,10 +22,9 @@ class Nginx(Parser):
             features = re.escape(version_and_date) + r"([\s\S]*?)\n\n\n"
 
             features_in_str = re.findall(features,HTML)
-            if len(features_in_str)==0:
-                break;
+            if len(features_in_str)==0 : continue
 
-            features_in_list = re.findall("\*\)\s*Feature:([\s\S]*?)\n\n",features_in_str[0])
+            features_in_list = re.findall("\*\)\s*([\s\S]*?)\n\n",features_in_str[0])
 
             #make it one line for each feature
             for i in range(len(features_in_list)):
