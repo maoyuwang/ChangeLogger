@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from Parsers.Parser import *
 import re
 
@@ -20,7 +22,12 @@ class Curl(Parser):
             record = dict()
 
             record['version'] = H3[i].text.replace("Fixed in ", "").split(" ")[1]
-            record['time'] = None
+            splitedHeader = H3[i].text.split(" - ")
+            if len(splitedHeader)== 2:
+                record['time'] = splitedHeader[-1]
+            else:
+                record['time'] = "None"
+
             record['content'] = [li.text.replace("\n", "") for li in LI]
 
             # 将本次更新添加至最终解析结果中去

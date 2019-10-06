@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from Parsers.Parser import *
 import re
 
@@ -30,7 +32,7 @@ class OpenJDK(Parser):
             record = dict()
             record['version'] = H2[i].text.replace("OpenJDK ", "").split(" ")[0]
             # 没有时间
-            record['time'] = None
+            record['time'] = "None"
             record['content'] = [li.text.replace("\n", "") for li in LI]
 
             # 将本次更新添加至最终解析结果中去
