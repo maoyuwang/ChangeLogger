@@ -13,25 +13,18 @@ class Rust(Parser):
         parseResult = list()
         
         all_version_and_date = re.findall("Version [\d.]+ \(\d+-\d+-\d+\)\n",HTML)
-
-        #print(all_version_and_date)
         
         for version_and_date in all_version_and_date:
             record = dict()
             record['version'] = re.search("Version ([\d\.]+) ",version_and_date).group(1)
             record['time'] = re.search("\((\d+-\d+-\d+)\)",version_and_date).group(1)
             record['content'] = list()
-
-            #print(record['version'])
-            #print(record['time'])
-            
             
             features = re.escape(version_and_date) + r"([\s\S]*?)(?=Version)"
 
             features_in_str = re.findall(features,HTML)
             if len(features_in_str)==0 : continue
 
-            #print(features_in_str)
             features_in_list = list()
 
             if record['version'] > "1.17.0":
