@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from Parsers.Parser import *
 # 复制本示例来创建一个新的Parser
 class Sample(Parser):

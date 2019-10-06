@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from threading import Thread
 from Parsers.Common import *
 class Parser(Thread):
