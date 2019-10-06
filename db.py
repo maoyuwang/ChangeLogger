@@ -34,8 +34,6 @@ class DB(object):
         id = changelog['id']
         verison = changelog['version']
         time = changelog['time']
-        if time ==  None:
-            time = "None"
         content = json.dumps(changelog['content'])
 
         sql = """INSERT INTO data (`ID`, `SoftwareID`, `Time`, `Version`, `Detail`) VALUES (%s, %s, %s, %s, %s)"""
@@ -44,8 +42,8 @@ class DB(object):
     def addChangelogs(self,softwareID,changelogs):
         params = [(changelog['id'],
                    softwareID,
+                   changelog['time'],
                    changelog['version'],
-                   changelog['time'] == None if "None" else changelog['time'],
                    json.dumps(changelog['content']))
                   for changelog in changelogs]
 

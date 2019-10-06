@@ -13,8 +13,6 @@ def idLabler(changelogs):
     for changelog in result:
         verison = changelog['version']
         time = changelog['time']
-        if time == None:
-            time = "None"
         content = json.dumps(changelog['content'])
 
         changelog["id"] = getMD5(verison + time + content)
