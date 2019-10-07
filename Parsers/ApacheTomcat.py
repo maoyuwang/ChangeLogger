@@ -3,21 +3,15 @@
 from Parsers.Parser import *
 import re
 
-class php7(Parser):
+class ApacheTomcat(Parser):
     def parse(self):
-        HTML = getWebsite("https://www.php.net/ChangeLog-7.php")
+        HTML = getWebsite("http://tomcat.apache.org/tomcat-9.0-doc/changelog.html")
         soup = BeautifulSoup(HTML,"lxml")
-        DIV = soup.find('div', attrs={"id": "layout"})
-        content = DIV.find('section', attrs={"id": "layout-content"})
-        anchor = content.find_all('section', attrs={"class": "version"})
-        H3=list()
-        UL=list()
-        time=list()
-        for x in anchor:
-            H3=H3+x.find_all('h3')
-            UL=UL+x.find_all('ul')
-            time_tmp=x.find('time',attrs={"class":"releasedate"})
-            time.append(time_tmp["datetime"])
+        DIV = soup.find('div', attrs={"id": "middle"}).find('div', attrs={"id": "mainRight"})
+        content = DIV.find('div', attrs={"id": "content"})
+        H3=content.find_all('h3')
+        UL = content.find_all('div', attrs={"class": "text"})
+        time=content.find_all('span', attrs={"style": "float: right;"})
         # 新建空列表准备储存解析结果
         parseResult = list()
 
@@ -26,13 +20,16 @@ class php7(Parser):
         for i in range(0, len(H3)):
             # 找到当前 ul 里面所有的 li 标签
             LI = UL[i].find_all("li")
-
+            #print(LI)
             # 新建一个字典储存本次更新的详情
             record = dict()
-            record['version'] = H3[i]
+            record['version'] = H3[i].text
             # 没有时间
-            record['time'] = time[i]
-            record['content'] = [li.text.replace("\n", "") for li in LI]
+            if(i==0):
+                record['time'] = "None"
+            else:
+                record['time'] = time[i-1].text
+            record['content'] = [li.text.replace("\n", "").replace("       ","") for li in LI]
 
             # 将本次更新添加至最终解析结果中去
             parseResult.append(record)
@@ -42,7 +39,7 @@ class php7(Parser):
 
 
 if __name__ == '__main__':
-    test = php7()
+    test = ApacheTomcat()
     test.start()
     test.join()
     print(test)
