@@ -16,3 +16,4 @@
 |phpMyAdmin|https://www.phpmyadmin.net/files/|
 |Ruby|https://www.ruby-lang.org/en/downloads/releases/|
 |Tomcat 9|http://tomcat.apache.org/tomcat-9.0-doc/changelog.html|
+|CyberDuck|https://cyberduck.io/changelog/|
