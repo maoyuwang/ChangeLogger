@@ -29,7 +29,7 @@ class php7(Parser):
 
             # 新建一个字典储存本次更新的详情
             record = dict()
-            record['version'] = H3[i]
+            record['version'] = H3[i].text.split(" ")[-1]
             # 没有时间
             record['time'] = time[i]
             record['content'] = [li.text.replace("\n", "") for li in LI]
