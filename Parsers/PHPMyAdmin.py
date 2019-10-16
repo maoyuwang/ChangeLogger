@@ -35,12 +35,18 @@ class PhpMyAdmin(Parser):
 
 			if record['version'] >= "2.11.10.1":
 				features = re.findall("\* ([\s\S]*?)(?=\s+\*|\n\n)",version_contents)
-				bugs = re.findall("- ([\s\S]*?)(?=\s+-|\n\n)",version_contents)
+				bugs = re.findall("(?<!-)- ([\s\S]*?)(?=\n\s*-|\n\n|\n\s*\+)",version_contents)
 				#make it one line for each feature or bug
 				for i in range(len(features)):
 					features[i] = re.sub(r"\n\s*"," ",features[i])
 				for i in range(len(bugs)):
 					bugs[i] = re.sub(r"\n\s*"," ",bugs[i])
+
+				#make it one line for each feature
+				for i in range(len(features)):
+					features[i] = re.sub(r"\n\s+"," ",features[i])
+				for i in range(len(bugs)):
+					bugs[i] = re.sub(r"\n\s+"," ",bugs[i])
 				
 				record['content'] = features + bugs
 
