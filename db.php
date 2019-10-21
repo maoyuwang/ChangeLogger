@@ -36,7 +36,7 @@ class db
         }
         return $ret;
     }
-    function  close(){
+    function close(){
         CloseCon($this->conn);
     }
 }
