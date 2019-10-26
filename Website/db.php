@@ -40,8 +40,8 @@ class db
         CloseCon($this->conn);
     }
 }
-$test=new db($servername,$username,$password, $dbname,$port);
+/*$test=new db($servername,$username,$password, $dbname,$port);
 $query="Select * from softwares";
 $args=Null;
-print_r($test->sql($query,$args,true));
+print_r($test->sql($query,$args,true));*/
 ?>
