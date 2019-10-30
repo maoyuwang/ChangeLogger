@@ -20,7 +20,7 @@ class db
         if(!is_null($args)){
             $where=$args;
         }
-        $query=$query ." WHERE ". $where;
+        $query="{$query} WHERE {$where}";
         $result = $this->conn->query($query);
         if($isselect){
             if ($result->num_rows > 0) {
@@ -40,8 +40,13 @@ class db
         CloseCon($this->conn);
     }
 }
-/*$test=new db($servername,$username,$password, $dbname,$port);
-$query="Select * from softwares";
-$args=Null;
-print_r($test->sql($query,$args,true));*/
+
+//Tests
+if (!count(debug_backtrace())) {
+    $test=new db($servername,$username,$password, $dbname,$port);
+    $query="Select * from softwares";
+    $args=Null;
+    print_r($test->sql($query,$args,true));
+}
+
 ?>
