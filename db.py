@@ -39,6 +39,18 @@ class DB(object):
         sql = """INSERT INTO data (`ID`, `SoftwareID`, `Time`, `Version`, `Detail`) VALUES (%s, %s, %s, %s, %s)"""
         self.db.insert(sql,(id,softwareID,time,verison,content))
 
+    def getSMSSubscribers(self,softwareID):
+        sql = """SELECT phone FROM `phone` WHERE softwareID =""" + str(softwareID)
+        selectResults = self.db.select(sql)
+        resultSet = [item[0] for item in selectResults]
+        return resultSet
+
+    def getEmailSubscribers(self,softwareID):
+        sql = """SELECT email FROM `email` WHERE softwareID =""" + str(softwareID)
+        selectResults = self.db.select(sql)
+        resultSet = [item[0] for item in selectResults]
+        return resultSet
+
     def addChangelogs(self,softwareID,changelogs):
         params = [(changelog['id'],
                    softwareID,
@@ -52,3 +64,7 @@ class DB(object):
 
     def __del__(self):
         self.db.close()
+
+if __name__ == '__main__':
+    db = DB()
+    print(db.getSMSSubscribers(5))

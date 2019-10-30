@@ -1,6 +1,7 @@
 from Parsers import *
 from dataFilter import *
 import hashlib
+from NotificationFactory import NotificationFactory
 
 def getMD5(string):
     m = hashlib.md5()
@@ -21,6 +22,7 @@ def idLabler(changelogs):
 if __name__ == '__main__':
 
     db = DB()
+    nofiticationFactory = NotificationFactory()
 
     parserList = \
         [
@@ -45,6 +47,7 @@ if __name__ == '__main__':
         mydataFilter = dataFilter(softwareID)
         filterResult = mydataFilter.filter(resultList[index])
         db.addChangelogs(softwareID,filterResult)
+        nofiticationFactory.add(softwareID,filterResult)
 
 
 

@@ -4,7 +4,6 @@ from Notifications import Email
 import json
 def emailQueue():
     q = Queue("email")
-    print(len(q))
     while(len(q)!=0):
         msg = json.loads(q.get())
         address = msg['address']
