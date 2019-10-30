@@ -10,8 +10,7 @@ class Software {
     
 
     function __construct($_ID) {
-        global $servername,$username,$password, $dbname,$port;
-        $this->database = new db($servername,$username,$password, $dbname,$port);
+        $this->database = new db();
         $this->ID = $_ID;
         $this->name = $this->findName();
         $this->description = $this->findDescription();
