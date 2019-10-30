@@ -37,7 +37,8 @@ if __name__ == '__main__':
             (9,Nodejs10.NodeJS10()),
             (10,PHP7.php7()),
             (11,Redis.Redis()),
-            (12,Rust.Rust())
+            (12,Rust.Rust()),
+            (99,testSoftware.testSoftware())
         ]
 
     resultList = [None] * len(parserList)
