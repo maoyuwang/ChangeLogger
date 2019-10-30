@@ -31,7 +31,12 @@ if __name__ == '__main__':
             (5,OpenJDK.OpenJDK()),
             (2,TelegramDesktop.TelegramDesktop()),
             (1,TelegramMac.TelegramMac()),
-            (6,VisualStudioCode.VisualStudioCode())
+            (6,VisualStudioCode.VisualStudioCode()),
+            (7,ApacheTomcat9.ApacheTomcat()),
+            (8,HAProxy.HAProxy()),
+            (10,PHP7.php7()),
+            (11,Redis.Redis()),
+            (12,Rust.Rust())
         ]
 
     resultList = [None] * len(parserList)

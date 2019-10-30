@@ -4,7 +4,7 @@ from Parsers.Parser import *
 import re
 
 
-class Rust(Parser):
+class Redis(Parser):
 
     def parse(self):
 
@@ -46,7 +46,7 @@ class Rust(Parser):
 
 
 if __name__ == '__main__':
-    testRust = Rust()
+    testRust = Redis()
     testRust.start()
     testRust.join()
     print(testRust)

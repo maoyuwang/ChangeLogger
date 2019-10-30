@@ -4,7 +4,7 @@ from Parsers.Parser import *
 import re
 
 
-class Rust(Parser):
+class NodeJS10(Parser):
 
     def parse(self):
 
@@ -46,7 +46,7 @@ class Rust(Parser):
 
 
 if __name__ == '__main__':
-    testRust = Rust()
-    testRust.start()
-    testRust.join()
-    print(testRust)
+    testNodeJS10 = NodeJS10()
+    testNodeJS10.start()
+    testNodeJS10.join()
+    print(testNodeJS10)
