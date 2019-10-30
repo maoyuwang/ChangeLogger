@@ -34,6 +34,7 @@ if __name__ == '__main__':
             (6,VisualStudioCode.VisualStudioCode()),
             (7,ApacheTomcat9.ApacheTomcat()),
             (8,HAProxy.HAProxy()),
+            (9,Nodejs10.NodeJS10()),
             (10,PHP7.php7()),
             (11,Redis.Redis()),
             (12,Rust.Rust())
