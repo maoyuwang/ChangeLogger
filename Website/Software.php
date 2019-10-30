@@ -34,8 +34,19 @@ class Software {
         return $this->icon;
     }
 
+
+    //get all the changelogs of the software
+    function getChangelogs() {
+        $query = "SELECT Detail FROM data";
+        $args = "SoftwareID = {$this->ID}";
+        $result = $this->database->sql($query, $args, true);
+
+        if ($result==NULL) return "No details available.";
+        else return $result;
+    }
+
     //get the changelog of a specific version
-    function getChangelogs($version) {
+    function getChangelog($version) {
         $query = "SELECT Detail FROM data";
         $args = "SoftwareID = {$this->ID} and Version = {$version}";
         $result = $this->database->sql($query, $args, true);
@@ -80,9 +91,9 @@ class Software {
 if (!count(debug_backtrace())) {
     $test_software=new Software(2);
     //echo $test_software->getName();
-    print_r($test_software->getChangelogs("1.8"));
-
-    print_r($test_software->getChangelogs("1.8.3"));
+    //print_r($test_software->getChangelogs("1.8"));
+    //print_r($test_software->getChangelogs("1.8.3"));
+    print_r($test_software->getChangelogs());
     print_r($test_software);
 }
 
