@@ -10,8 +10,7 @@ class Software {
     
 
     function __construct($_ID) {
-        global $servername,$username,$password, $dbname,$port;
-        $this->database = new db($servername,$username,$password, $dbname,$port);
+        $this->database = new db();
         $this->ID = $_ID;
         $this->name = $this->findName();
         $this->description = $this->findDescription();
@@ -87,6 +86,7 @@ class Software {
     
 }
 
+<<<<<<< HEAD:Website/Software.php
 //Tests
 if (!count(debug_backtrace())) {
     $test_software=new Software(2);
@@ -97,4 +97,6 @@ if (!count(debug_backtrace())) {
     print_r($test_software);
 }
 
+=======
+>>>>>>> ba09dc0c511bfda552339b17aeb886721fb3b502:Website/SoftwareController.php
 ?>

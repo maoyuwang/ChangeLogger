@@ -1,3 +1,9 @@
+<?php
+    $softwareID = $_GET["id"];
+    include_once Software::class;
+    $software = new Software($softwareID);
+
+?>
 <html lang="en">
 
 <head>
@@ -55,13 +61,12 @@
                     <div class="col-md-8">
 
                         <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                            <img class="card-img-right flex-auto d-none d-md-block" src="http://iph.href.lu/200x200"
+                            <img class="card-img-right flex-auto d-none d-md-block" src="img/icons/"
                                 data-holder-rendered="true" style="width: 200px; height: 200px;">
                             <div class="card-body d-flex flex-column align-items-start">
-                                <h3 class="mb-0">SoftwareName</h3>
+                                <h3 class="mb-0"><?php echo $software->getName() ?></h3>
                                 <div class="mb-1 text-muted"> LatestVersionNum </div>
-                                <p class="card-text mb-auto">This is description text text below as a
-                                    natural lead-in to additional content.</p>
+                                <p class="card-text mb-auto"><?php echo $software->getDescription() ?></p>
                             </div>
 
                         </div>

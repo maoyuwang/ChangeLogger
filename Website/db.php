@@ -3,9 +3,10 @@ include 'config.php';
 class db
 {
     var $conn;
-    function __construct($servername, $username,$password,$dbname,$port)
+    function __construct()
     {
-        $this->conn = new mysqli($servername, $username,$password,$dbname,$port);
+        global $config;
+        $this->conn = new mysqli($config['DB_SERVER'], $config['DB_USER'],$config['DB_PASSWORD'],$config['DB_NAME'],$config['DB_PORT']);
         if($this->conn) {
             echo "Connection established\n";
         }else{
@@ -43,7 +44,7 @@ class db
 
 //Tests
 if (!count(debug_backtrace())) {
-    $test=new db($servername,$username,$password, $dbname,$port);
+    $test=new db();
     $query="Select * from softwares";
     $args=Null;
     print_r($test->sql($query,$args,true));

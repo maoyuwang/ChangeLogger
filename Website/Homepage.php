@@ -6,9 +6,9 @@ class Homepage
 
     var $SearchName;
     var $conn;
-    function __construct($servername, $username, $password, $dbname, $port)
+    function __construct()
     {
-        $this->conn = new db($servername,$username,$password, $dbname,$port);
+        $this->conn = new db();
     }
     function searchSoftware($_SearchName)
     {
@@ -29,7 +29,7 @@ class Homepage
 
 
 }
-$test_software=new Homepage($servername, $username, $password,  $dbname,$port);
+$test_software=new Homepage();
 print_r($test_software->getAllSupportedSoftware()) ;
 
 
