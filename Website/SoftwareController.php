@@ -85,18 +85,4 @@ class Software {
     }
     
 }
-
-<<<<<<< HEAD:Website/Software.php
-//Tests
-if (!count(debug_backtrace())) {
-    $test_software=new Software(2);
-    //echo $test_software->getName();
-    //print_r($test_software->getChangelogs("1.8"));
-    //print_r($test_software->getChangelogs("1.8.3"));
-    print_r($test_software->getChangelogs());
-    print_r($test_software);
-}
-
-=======
->>>>>>> ba09dc0c511bfda552339b17aeb886721fb3b502:Website/SoftwareController.php
 ?>

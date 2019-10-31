@@ -1,6 +1,6 @@
 <?php
     $softwareID = $_GET["id"];
-    include_once Software::class;
+    include_once "SoftwareController.php";
     $software = new Software($softwareID);
 
 ?>
@@ -61,7 +61,7 @@
                     <div class="col-md-8">
 
                         <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                            <img class="card-img-right flex-auto d-none d-md-block" src="img/icons/"
+                            <img class="card-img-right flex-auto d-none d-md-block" src="img/icons/<?php echo $software->getIcon() ?>"
                                 data-holder-rendered="true" style="width: 200px; height: 200px;">
                             <div class="card-body d-flex flex-column align-items-start">
                                 <h3 class="mb-0"><?php echo $software->getName() ?></h3>
