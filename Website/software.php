@@ -3,6 +3,33 @@
     include_once "SoftwareController.php";
     $software = new Software($softwareID);
     $changelogs = $software->getChangelogs();
+    $latestVersion = $changelogs[0]['Version'];
+
+
+    function changelogCard($version,$time,$detail){
+        $tag = md5($version.$time);
+        $str = <<<EOD
+        <div class="card">
+        <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse"
+                    data-target="#$tag" aria-expanded="true" aria-controls="$tag">
+                    $version
+                </button>
+                <div class="mb-1 text-muted"> $time </div>
+            </h2>
+        </div>
+
+        <div id="$tag" class="collapse show" aria-labelledby="headingOne"
+            data-parent="#changelogs">
+            <div class="card-body">
+                $detail
+            </div>
+        </div>
+    </div>
+EOD;
+        return $str;
+    }
 
 ?>
 <html lang="en">
@@ -65,7 +92,7 @@
                             <img class="card-img-right flex-auto d-none d-md-block" src="img/icons/<?php echo $software->getIcon() ?>" style="width: 200px; height: 200px;">
                             <div class="card-body d-flex flex-column align-items-start">
                                 <h3 class="mb-0"><?php echo $software->getName() ?></h3>
-                                <div class="mb-1 text-muted"> <?php echo $changelogs[0]['Version'] ?> </div>
+                                <div class="mb-1 text-muted"> <?php echo $latestVersion ?> </div>
                                 <p class="card-text mb-auto"><?php echo $software->getDescription() ?></p>
                             </div>
 
@@ -78,7 +105,6 @@
                                 Subscribe
                             </div>
                             <div class="card-body">
-                                <p class="card-text">Subscribe future update information.</p>
                                 <button type="button" class="btn btn-primary btn-block" data-toggle="modal"
                                     data-target="#Email">Email</button>
                                 <button type="button" class="btn btn-success btn-block">Text</button>
@@ -90,78 +116,12 @@
                 <div class="row py-4">
                     <div class="col-md-12">
                         <div class="accordion" id="changelogs">
-                            <div class="card">
-                                <div class="card-header" id="headingOne">
-                                    <h2 class="mb-0">
-                                        <button class="btn btn-link" type="button" data-toggle="collapse"
-                                            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            1.1.0
-                                        </button>
-                                    </h2>
-                                </div>
-
-                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                    data-parent="#changelogs">
-                                    <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-                                        Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
-                                        you probably haven't heard of them accusamus labore sustainable VHS.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="headingTwo">
-                                    <h2 class="mb-0">
-                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                            data-target="#collapseTwo" aria-expanded="false"
-                                            aria-controls="collapseTwo">
-                                            1.1.2
-                                        </button>
-                                    </h2>
-                                </div>
-                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                    data-parent="#changelogs">
-                                    <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-                                        Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
-                                        you probably haven't heard of them accusamus labore sustainable VHS.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="headingThree">
-                                    <h2 class="mb-0">
-                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                            data-target="#collapseThree" aria-expanded="false"
-                                            aria-controls="collapseThree">
-                                            1.1.4
-                                        </button>
-                                    </h2>
-                                </div>
-                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                                    data-parent="#changelogs">
-                                    <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-                                        Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
-                                        you probably haven't heard of them accusamus labore sustainable VHS.
-                                    </div>
-                                </div>
-                            </div>
+                            <?php
+                            $length = count($changelogs);
+                            for($i = 0; $i < $length;$i++){
+                                echo(changelogCard($changelogs[$i]['Version'],$changelogs[$i]['Time'],$changelogs[$i]['Detail']));
+                            }
+                             ?>
                         </div>
                     </div>
                 </div>
