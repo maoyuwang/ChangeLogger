@@ -27,14 +27,14 @@
         <div class="card-header" id="$headingID">
             <h2 class="mb-0">
                 <button class="btn btn-link" type="button" data-toggle="collapse"
-                    data-target="#$tag" aria-expanded="false" aria-controls="$tag">
+                    data-target="#$tag" aria-expanded="true" aria-controls="$tag">
                     $version  $time
                 </button>
                 
             </h2>
         </div>
 
-        <div id="$tag" class="collapse" aria-labelledby="$headingID"
+        <div id="$tag" class="collapse show" aria-labelledby="$headingID"
             data-parent="#changelogs">
             <div class="card-body">
                 $detailStr
