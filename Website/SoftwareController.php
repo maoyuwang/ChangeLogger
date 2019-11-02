@@ -36,7 +36,7 @@ class Software {
 
     //get all the changelogs of the software
     function getChangelogs() {
-        $query = "SELECT Detail FROM data";
+        $query = "SELECT * FROM data";
         $args = "SoftwareID = {$this->ID}";
         $result = $this->database->sql($query, $args, true);
 
