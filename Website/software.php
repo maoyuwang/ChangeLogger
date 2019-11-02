@@ -8,22 +8,33 @@
 
     function changelogCard($version,$time,$detail){
         $tag = md5($version.$time);
+
+        $detailStr= <<< EOD
+        <ul class="list-group">
+        EOD;
+
+        foreach ($$detail as &$log) {
+            $detailStr += "<li class=\"list-group-item\">$log</li>";
+        }
+
+        $detailStr += "</ul>";
+
         $str = <<<EOD
         <div class="card">
-        <div class="card-header" id="headingOne">
+        <div class="card-header" id="$tag">
             <h2 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse"
-                    data-target="#$tag" aria-expanded="true" aria-controls="$tag">
+                <button class="btn btn-link" type="button" data-toggle="$tag"
+                    data-target="#$tag" aria-expanded="false" aria-controls="$tag">
                     $version
                 </button>
-                <div class="mb-1 text-muted"> $time </div>
+                $time
             </h2>
         </div>
 
-        <div id="$tag" class="collapse show" aria-labelledby="headingOne"
+        <div id="$tag" class="$tag show" aria-labelledby="headingOne"
             data-parent="#changelogs">
             <div class="card-body">
-                $detail
+                $detailStr
             </div>
         </div>
     </div>
