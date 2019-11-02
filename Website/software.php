@@ -8,7 +8,9 @@
 
     function changelogCard($version,$time,$detail){
         $tag = md5($version.$time);
+        $headingID = uniqid();
         $detail = json_decode($detail);
+        
         $detailStr= <<< EOD
         <ul class="list-group">
         EOD;
@@ -22,9 +24,9 @@
 
         $str = <<<EOD
         <div class="card">
-        <div class="card-header" id="$tag">
+        <div class="card-header" id="$headingID">
             <h2 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="$tag"
+                <button class="btn btn-link" type="button" data-toggle="collapse"
                     data-target="#$tag" aria-expanded="false" aria-controls="$tag">
                     $version  $time
                 </button>
@@ -32,7 +34,7 @@
             </h2>
         </div>
 
-        <div id="$tag" class="$tag show" aria-labelledby="headingOne"
+        <div id="$tag" class="collapse" aria-labelledby="$headingID"
             data-parent="#changelogs">
             <div class="card-body">
                 $detailStr
