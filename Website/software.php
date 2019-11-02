@@ -13,7 +13,7 @@
         <ul class="list-group">
         EOD;
 
-        foreach ($$detail as &$log) {
+        foreach ($detail as &$log) {
             $detailStr += "<li class=\"list-group-item\">$log</li>";
         }
 
