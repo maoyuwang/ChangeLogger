@@ -13,8 +13,9 @@
         <ul class="list-group">
         EOD;
 
-        foreach ($detail as &$log) {
-            $detailStr += "<li class=\"list-group-item\">$log</li>";
+        for($i = 0; $i < count($detail); $i++)
+        {
+            $detailStr = $detailStr + "<li class=\"list-group-item\">".$detail[$i]."</li>";
         }
 
         $detailStr += "</ul>";
