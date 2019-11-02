@@ -8,14 +8,14 @@
 
     function changelogCard($version,$time,$detail){
         $tag = md5($version.$time);
-
+        $detail = json_decode($detail);
         $detailStr= <<< EOD
         <ul class="list-group">
         EOD;
 
         for($i = 0; $i < count($detail); $i++)
         {
-            $detailStr = $detailStr + "<li class=\"list-group-item\">".$detail[$i]."</li>";
+            $detailStr = $detailStr."<li class=\"list-group-item\">".$detail[$i]."</li>";
         }
 
         $detailStr += "</ul>";
@@ -131,7 +131,7 @@ EOD;
                             <?php
                             $length = count($changelogs);
                             for($i = 0; $i < $length;$i++){
-                                echo(changelogCard($changelogs[$i]['Version'],$changelogs[$i]['Time'],$changelogs[$i]['Detail']));
+                                echo changelogCard($changelogs[$i]['Version'],$changelogs[$i]['Time'],$changelogs[$i]['Detail']);
                             }
                              ?>
                         </div>
