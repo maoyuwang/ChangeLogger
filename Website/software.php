@@ -2,6 +2,7 @@
     $softwareID = $_GET["id"];
     include_once "SoftwareController.php";
     $software = new Software($softwareID);
+    $changelogs = $software->getChangelogs();
 
 ?>
 <html lang="en">
@@ -64,14 +65,14 @@
                             <img class="card-img-right flex-auto d-none d-md-block" src="img/icons/<?php echo $software->getIcon() ?>" style="width: 200px; height: 200px;">
                             <div class="card-body d-flex flex-column align-items-start">
                                 <h3 class="mb-0"><?php echo $software->getName() ?></h3>
-                                <div class="mb-1 text-muted"> LatestVersionNum </div>
+                                <div class="mb-1 text-muted"> <?php $changelogs[0]['Version'] ?> </div>
                                 <p class="card-text mb-auto"><?php echo $software->getDescription() ?></p>
                             </div>
 
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <?php print_r($software->getChangelogs()) ?>
+                        
                         <div class="card  box-shadow">
                             <div class="card-header">
                                 Subscribe
