@@ -18,7 +18,7 @@
             $detailStr = $detailStr."<li class=\"list-group-item\">".$detail[$i]."</li>";
         }
 
-        $detailStr += "</ul>";
+        $detailStr = $detailStr."</ul>";
 
         $str = <<<EOD
         <div class="card">
