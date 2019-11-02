@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+include_once 'config.php';
 class db
 {
     var $conn;
@@ -8,7 +8,7 @@ class db
         global $config;
         $this->conn = new mysqli($config['DB_SERVER'], $config['DB_USER'],$config['DB_PASSWORD'],$config['DB_NAME'],$config['DB_PORT']);
         if($this->conn) {
-            echo "Connection established\n";
+            //echo "Connection established\n";
         }else{
             echo "Connection could not be established.\n";
             die( print_r( sqlsrv_errors(), true));
@@ -29,10 +29,10 @@ class db
                 while($row = $result->fetch_assoc()) {
                     $set[] = $row;
                     $ret=$set;
-                    echo "\n";
+                    #echo "\n";
                 }
             } else {
-                echo "0 results";
+                #echo "0 results";
             }
         }
         return $ret;
