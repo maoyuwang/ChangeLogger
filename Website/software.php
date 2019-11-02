@@ -26,9 +26,9 @@
             <h2 class="mb-0">
                 <button class="btn btn-link" type="button" data-toggle="$tag"
                     data-target="#$tag" aria-expanded="false" aria-controls="$tag">
-                    $version
+                    $version  $time
                 </button>
-                $time
+                
             </h2>
         </div>
 
