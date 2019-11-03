@@ -123,7 +123,7 @@ EOD;
                                     data-target="#EmailModel">Email</button>
                                 <button type="button" class="btn btn-success btn-block" data-toggle="modal"
                                         data-target="#PhoneModel">Text</button>
-                                <button type="button" class="btn btn-warning btn-block" onclick="window.open('/feed.php')">RSS Feed</button>
+                                <button type="button" class="btn btn-warning btn-block" onclick="window.open('/feed.php?softwareID=<?php echo $softwareID; ?>')">RSS Feed</button>
                             </div>
                         </div>
                     </div>
@@ -228,6 +228,8 @@ EOD;
         httpRequest.open('GET', url, true);
         httpRequest.send();
 
+        alert("You have subscribed successfully.");
+
     }
 
     function submitPhone() {
@@ -240,6 +242,7 @@ EOD;
         var httpRequest = new XMLHttpRequest();
         httpRequest.open('GET', url, true);
         httpRequest.send();
+        alert("You have subscribed successfully.");
 
     }
 </script>
