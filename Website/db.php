@@ -37,6 +37,16 @@ class db
         }
         return $ret;
     }
+
+    function insert($sql){
+        if ($this->conn->query($sql) === TRUE) {
+            return true;
+        } else {
+            echo "Error: " . $sql . "<br>" . $this->conn->error;
+            return false;
+        }
+    }
+
     function close(){
         CloseCon($this->conn);
     }

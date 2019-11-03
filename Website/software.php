@@ -28,7 +28,7 @@
             <h2 class="mb-0">
                 <button class="btn btn-link" type="button" data-toggle="collapse"
                     data-target="#$tag" aria-expanded="true" aria-controls="$tag">
-                    $version  $time
+                    $version ($time)
                 </button>
                 
             </h2>
@@ -121,8 +121,9 @@ EOD;
                             <div class="card-body">
                                 <button type="button" class="btn btn-primary btn-block" data-toggle="modal"
                                     data-target="#Email">Email</button>
-                                <button type="button" class="btn btn-success btn-block">Text</button>
-                                <button type="button" class="btn btn-warning btn-block">RSS Feed</button>
+                                <button type="button" class="btn btn-success btn-block" data-toggle="modal"
+                                        data-target="#Phone">Text</button>
+                                <button type="button" class="btn btn-warning btn-block" onclick="window.open('/rss.php')">RSS Feed</button>
                             </div>
                         </div>
                     </div>
@@ -165,7 +166,7 @@ EOD;
 </body>
 
 
-<!-- Modal -->
+<!-- Email Modal -->
 <div class="modal fade" id="Email" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -175,15 +176,75 @@ EOD;
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input name="email" type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Confirm</button>
+                </div>
+        </div>
+    </div>
+</div>
+
+<!-- Phone Modal -->
+<div class="modal fade" id="Phone" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             <div class="modal-body">
-                ...
+                <div class="form-group">
+                    <label for="exampleInputPhone">Phone Number</label>
+                    <input name="phone" type="phone" class="form-control" id="InputPhone"  placeholder="Enter phone number">
+                    <small id="PhoneHelp" class="form-text text-muted">We'll never share your phone number with anyone else.</small>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary">Confirm</button>
             </div>
         </div>
     </div>
 </div>
 
 </html>
+
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURI(r[2]);
+        return null;
+    }
+
+    function submitEmail() {
+        var softwareID = getQueryString('id');
+        var email = $('#InputEmail').textContent;
+        console.log(email);
+
+        var url = "/subscribe.php?type=email&id=" + softwareID + '&address=' + email;
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.open('GET', url, true);
+        httpRequest.send();
+
+    }
+
+    function submitPhone() {
+        var softwareID = getQueryString('id');
+        var phone = $('#InputPhone').textContent;
+        console.log(phone);
+
+        var url = "/subscribe.php?type=phone&id=" + softwareID + '&address=' + phone;
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.open('GET', url, true);
+        httpRequest.send();
+
+    }
+</script>

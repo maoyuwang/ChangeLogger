@@ -1,6 +1,5 @@
 <?php
-include 'db.php';
-include 'config.php';
+include_once 'db.php';
 class Software {
     private $ID;
     private $name;
