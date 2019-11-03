@@ -219,11 +219,11 @@ EOD;
 <script>
 
     function submitEmail() {
-        var softwareID = <?php echo $softwareID;?> ;
         var email = document.getElementById('InputEmail').value;
-        console.log(email);
 
-        var url = "/subscribe.php?type=email&id=" + softwareID + '&address=' + email;
+
+        var url = "/subscribe.php?type=email&softwareID=<?php echo $softwareID;?> &address=" + email;
+        console.log(url);
         var httpRequest = new XMLHttpRequest();
         httpRequest.open('GET', url, true);
         httpRequest.send();
@@ -233,9 +233,10 @@ EOD;
     function submitPhone() {
         var softwareID = <?php echo $softwareID;?>;
         var phone = document.getElementById('InputPhone').value;
-        console.log(phone);
 
-        var url = "/subscribe.php?type=phone&id=" + softwareID + '&address=' + phone;
+        var url = "/subscribe.php?type=phone&softwareID=<?php echo $softwareID;?> &address=" + phone;
+        console.log(url);
+
         var httpRequest = new XMLHttpRequest();
         httpRequest.open('GET', url, true);
         httpRequest.send();
