@@ -16,7 +16,7 @@ $softwareName = $software->getName();
 if($type == 'phone')
 {
     $sql = "INSERT INTO phone (phone, softwareID) VALUES ('$address',$softwareID)";
-    $MsgQueue = new MessageQueue('queue:phone');
+    $MsgQueue = new MessageQueue('queue:sms');
 }
 else if($type == 'email'){
     $sql = "INSERT INTO email (email, softwareID) VALUES ('$address',$softwareID)";
