@@ -8,7 +8,7 @@ function card($softwareID,$icon, $softwareName, $description)
     $str = <<<EOD
 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
-                            <a href="software.php?id=$softwareID"><img class="card-img-right flex-auto d-none d-md-block" src="img/icons/$icon" style="width: 100%; height: 200px;"></a>
+                            <a href="software.php?id=$softwareID"><img class="card-img-right flex-auto d-none d-md-block" src="img/icons/$icon" style="width: auto; height: auto;"></a>
                         <div class="card-body">
                             <h3>$softwareName</h3>
                             <p class="card-text">$description</p>
@@ -50,16 +50,16 @@ EOD;
             <div class="row">
                 <div class="col-sm-8 col-md-7 py-4">
                     <h4 class="text-white">About</h4>
-                    <p class="text-muted">Add some information about the album below, the author, or any other
-                        background context. Make it a few sentences long so folks can pick up some informative tidbits.
-                        Then, link them off to some social networking sites or contact information.</p>
+                    <h4 class="text-white">About</h4>
+                    <p class="text-muted">ChangeLogger is a website for tracking software changelogs. Allows users
+                        to subscribe changes for their favourite software.</p>
                 </div>
                 <div class="col-sm-4 offset-md-1 py-4">
                     <h4 class="text-white">Contact</h4>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">Follow on Twitter</a></li>
-                        <li><a href="#" class="text-white">Like on Facebook</a></li>
-                        <li><a href="#" class="text-white">Email me</a></li>
+                        <li><a href="https://github.com/maoyuwang/ChangeLogger" class="text-white">Github</a></li>
+                        <!-- <li><a href="#" class="text-white">Like on Facebook</a></li>
+                        <li><a href="#" class="text-white">Email me</a></li> -->
                     </ul>
                 </div>
             </div>
@@ -92,8 +92,8 @@ EOD;
             <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator,
                 etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
             <p>
-                <a href="#" class="btn btn-primary my-2">Main call to action</a>
-                <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+                <a href="https://github.com/maoyuwang/changelogger" class="btn btn-primary my-2">GitHub</a>
+                <a href="/search.php" class="btn btn-secondary my-2">Search</a>
             </p>
         </div>
     </section>
