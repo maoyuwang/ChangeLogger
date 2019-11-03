@@ -120,10 +120,10 @@ EOD;
                             </div>
                             <div class="card-body">
                                 <button type="button" class="btn btn-primary btn-block" data-toggle="modal"
-                                    data-target="#Email">Email</button>
+                                    data-target="#EmailModel">Email</button>
                                 <button type="button" class="btn btn-success btn-block" data-toggle="modal"
-                                        data-target="#Phone">Text</button>
-                                <button type="button" class="btn btn-warning btn-block" onclick="window.open('/rss.php')">RSS Feed</button>
+                                        data-target="#PhoneModel">Text</button>
+                                <button type="button" class="btn btn-warning btn-block" onclick="window.open('/feed.php')">RSS Feed</button>
                             </div>
                         </div>
                     </div>
@@ -226,7 +226,7 @@ EOD;
 
     function submitEmail() {
         var softwareID = getQueryString('id');
-        var email = $('#InputEmail').textContent;
+        var email = document.getElementById('InputEmail').value;
         console.log(email);
 
         var url = "/subscribe.php?type=email&id=" + softwareID + '&address=' + email;
@@ -238,7 +238,7 @@ EOD;
 
     function submitPhone() {
         var softwareID = getQueryString('id');
-        var phone = $('#InputPhone').textContent;
+        var phone = document.getElementById('InputPhone').value;
         console.log(phone);
 
         var url = "/subscribe.php?type=phone&id=" + softwareID + '&address=' + phone;
