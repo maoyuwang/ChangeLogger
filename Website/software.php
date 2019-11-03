@@ -167,7 +167,7 @@ EOD;
 
 
 <!-- Email Modal -->
-<div class="modal fade" id="Email" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="EmailModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -184,14 +184,14 @@ EOD;
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Confirm</button>
+                    <button type="button" onclick="submitEmail()" class="btn btn-primary" data-dismiss="modal">Confirm</button>
                 </div>
         </div>
     </div>
 </div>
 
 <!-- Phone Modal -->
-<div class="modal fade" id="Phone" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="PhoneModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -208,7 +208,7 @@ EOD;
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Confirm</button>
+                <button type="button" onclick="submitPhone()" class="btn btn-primary" data-dismiss="modal">Confirm</button>
             </div>
         </div>
     </div>
