@@ -29,7 +29,5 @@ class Homepage
 
 
 }
-$test_software=new Homepage();
-print_r($test_software->getAllSupportedSoftware()) ;
 
 

@@ -21,6 +21,7 @@ function card($softwareID,$icon, $softwareName, $description)
                     </div>
                 </div>
 EOD;
+    return $str;
 
 }
 
@@ -101,7 +102,13 @@ EOD;
         <div class="container">
 
             <div class="row">
-                asdsdasd
+                <?php
+                    $allSoftware = $homepage->getAllSupportedSoftware();
+                    for ($i = 0; $i < count($allSoftware);$i++)
+                    {
+                        echo card($allSoftware[$i]['ID'],$allSoftware[$i]['Icon'],$allSoftware[$i]['Name'],$allSoftware[$i]['Description']);
+                    }
+                ?>
 
             </div>
         </div>
