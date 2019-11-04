@@ -24,7 +24,7 @@ for($i = 0; $i < $length;$i++){
     $detailStr="";
     for($j = 0; $j < count($detail); $j++)
     {
-        $detailStr = $detailStr."<details>".$detail[$j]."</details>\n";
+        $detailStr = $detailStr."<details$j>".$detail[$j]."</details$j>\n";
     }
 
     echo "<item>$name";
