@@ -82,9 +82,9 @@ EOD;
 
     <section class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">Album example</h1>
-            <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator,
-                etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+            <h1 class="jumbotron-heading">ChangeLogger</h1>
+            <p class="lead text-muted">ChangeLogger is a website for tracking popular software changelogs. Allows users
+                to subscribe changes for their favourite software.</p>
             <p>
                 <a href="https://github.com/maoyuwang/changelogger" class="btn btn-primary my-2">GitHub</a>
                 <button data-toggle="modal"
