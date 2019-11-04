@@ -20,10 +20,15 @@ for($i = 0; $i < $length;$i++){
     $version=$changelogs[$i]['Version'];
     $time=$changelogs[$i]['Time'];
     $detail=$changelogs[$i]['Detail'];
-    echo $detail;
+    $detail = json_decode($detail);
     echo "<item>$name";
     echo "<version>$version</version>\n";
     echo "<time>$time</time>\n";
+    for($j = 0; $j < count($detail); $j++)
+    {
+        $details=$detail[j];
+        echo "<details>$details</details>\n";
+    }
 
     echo "<atom:link href='https://changelogger.org/feed.php?$softwareID' rel='self' type='application/rss+xml'/>\n";
     echo "</item>\n";
