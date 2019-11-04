@@ -50,13 +50,6 @@ class db
     function close(){
         CloseCon($this->conn);
     }
-}
+}?>
 
-//Tests
-/*if (!count(debug_backtrace())) {
-    $test=new db();
-    $query="Select * from softwares";
-    $args=Null;
-    print_r($test->sql($query,$args,true));
-}*/
 
