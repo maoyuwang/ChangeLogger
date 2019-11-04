@@ -14,4 +14,3 @@ echo "<description>RSS Description</description>\n";
 echo "</channel>\n";
 echo "</rss>\n";
 ?>
-?>
