@@ -60,4 +60,3 @@ class db
     print_r($test->sql($query,$args,true));
 }*/
 
-?>
