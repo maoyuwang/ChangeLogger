@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 Header('Content-type: text/xml');
-$xml = new SimpleXMLElement('<xml/>');
+$xml = new SimpleXMLElement('<xml/> ');
 include_once "SoftwareController.php";
 $softwareID = $_GET["softwareID"];
 $software = new Software($softwareID);

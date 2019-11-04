@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include_once 'db.php';
 class Software {
     private $ID;
