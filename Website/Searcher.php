@@ -8,9 +8,8 @@ class Searcher{
     }
 
     function search($keyword){
-        $query = "SELECT * FROM softwares WHERE Name LIKE '%$keyword%' OR Description LIKE '%$keyword%'";
-        $args = Null;
-        $this->db -> sql($query, $args, true);
+        $query = "SELECT * FROM softwares";
+        $args = "Name LIKE '%$keyword%' OR Description LIKE '%$keyword%'";
         return  $this->db -> sql($query, $args, true);
     }
 }
