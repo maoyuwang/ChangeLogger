@@ -1,17 +1,22 @@
-﻿<?php
-Header('Content-type: text/xml');
-$xml = new SimpleXMLElement('<xml/> ');
-include_once "SoftwareController.php";
-$softwareID = $_GET["softwareID"];
-$software = new Software($softwareID);
-$changelogs = $software->getChangelogs();
-$length = count($changelogs);
-for($i = 0; $i < $length;$i++){
-    $track = $xml->addChild('item');
-    $track->addChild('version', $changelogs[$i]['Version']);
-    $track->addChild('update_time', $changelogs[$i]['Time']);
-    $track->addChild('content', $changelogs[$i]['Detail']);
-}
+<?php
+/* create a dom document with encoding utf8 */
+$domtree = new DOMDocument('1.0', 'UTF-8');
 
-echo $xml->asXML();
+/* create the root element of the xml tree */
+$xmlRoot = $domtree->createElement("xml");
+/* append it to the document created */
+$xmlRoot = $domtree->appendChild($xmlRoot);
+
+$currentTrack = $domtree->createElement("track");
+$currentTrack = $xmlRoot->appendChild($currentTrack);
+
+/* you should enclose the following two lines in a cicle */
+$currentTrack->appendChild($domtree->createElement('path','song1.mp3'));
+$currentTrack->appendChild($domtree->createElement('title','title of song1.mp3'));
+
+$currentTrack->appendChild($domtree->createElement('path','song2.mp3'));
+$currentTrack->appendChild($domtree->createElement('title','title of song2.mp3'));
+
+/* get the xml printed */
+echo $domtree->saveXML();
 ?>

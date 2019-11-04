@@ -1,4 +1,4 @@
-﻿<?php
+<?php
     $softwareID = $_GET["id"];
     include_once "SoftwareController.php";
     $software = new Software($softwareID);
