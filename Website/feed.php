@@ -20,7 +20,6 @@ for($i = 0; $i < $length;$i++){
     $version=$changelogs[$i]['Version'];
     $time=$changelogs[$i]['Time'];
     $detail=$changelogs[$i]['Detail'];
-    $detail = json_decode($detail);
 
     echo "<item>$name";
     echo "<version>$version</version>\n";
