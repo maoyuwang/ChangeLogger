@@ -1,5 +1,5 @@
-﻿<?php
-include_once 'config.php';
+<?php
+include 'config.php';
 class db
 {
     var $conn;
