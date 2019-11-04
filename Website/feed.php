@@ -1,7 +1,7 @@
 <?php
 /* create a dom document with encoding utf8 */
 $domtree = new DOMDocument('1.0', 'UTF-8');
-
+include_once "SoftwareController.php";
 /* create the root element of the xml tree */
 $xmlRoot = $domtree->createElement("xml");
 /* append it to the document created */
