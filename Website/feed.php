@@ -1,11 +1,11 @@
 <?php
 Header('Content-type: text/xml');
+$xml = new SimpleXMLElement('<xml/>');
 include_once "SoftwareController.php";
 $softwareID = $_GET["softwareID"];
 $software = new Software($softwareID);
 $changelogs = $software->getChangelogs();
 $length = count($changelogs);
-$xml = new SimpleXMLElement('<xml/>');
 for($i = 0; $i < $length;$i++){
     $track = $xml->addChild('item');
     $track->addChild('version', $changelogs[$i]['Version']);
