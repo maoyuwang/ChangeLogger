@@ -1,5 +1,5 @@
 <?php
-include "SoftwareController.php";
+
 $softwareID = $_GET["softwareID"];
 $software = new Software($softwareID);
 $changelogs = $software->getChangelogs();

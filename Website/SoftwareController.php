@@ -1,5 +1,5 @@
 <?php
-include 'db.php';
+include_once 'db.php';
 class Software {
     private $ID;
     private $name;
