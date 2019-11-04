@@ -53,11 +53,11 @@ class db
 }
 
 //Tests
-if (!count(debug_backtrace())) {
+/*if (!count(debug_backtrace())) {
     $test=new db();
     $query="Select * from softwares";
     $args=Null;
     print_r($test->sql($query,$args,true));
-}
+}*/
 
 ?>
