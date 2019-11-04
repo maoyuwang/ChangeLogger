@@ -24,7 +24,7 @@ for($i = 0; $i < $length;$i++){
 
     echo "<item>$name";
     echo "<version>$version</version>\n";
-    echo "<detail>$detail</detail>\n";
+    echo "<detail>join(\" \",$detail)</detail>\n";
     echo "<time>$time</time>\n";
 
 
