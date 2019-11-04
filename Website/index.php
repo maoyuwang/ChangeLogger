@@ -137,7 +137,7 @@ EOD;
         <form target="_blank" action="/search.php">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="SearchModelLabel">Modal title</h5>
+                <h5 class="modal-title" id="SearchModelLabel">Search By Name / Description</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
