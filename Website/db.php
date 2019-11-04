@@ -51,5 +51,3 @@ class db
         CloseCon($this->conn);
     }
 }?>
-
-
