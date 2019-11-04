@@ -10,7 +10,7 @@ class Searcher{
     function search($keyword){
         $query = "SELECT * FROM softwares WHERE Name LIKE '%$keyword%' OR Description LIKE '%$keyword%'";
         $args = Null;
-        $this->conn -> sql($query, $args, true);
-        return  $this->conn -> sql($query, $args, true);
+        $this->db -> sql($query, $args, true);
+        return  $this->db -> sql($query, $args, true);
     }
 }

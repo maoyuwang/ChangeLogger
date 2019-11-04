@@ -83,13 +83,13 @@ EOD;
                         $searcher = new Searcher();
                         $results = $searcher->search($keyword);
 
+
                         if (count($results) == 0){
                             echo "No results founded.";
                         }
 
                         for ($i=0;$i<count($results);$i++)
                         {
-                            print_r($results[$i]);
                             echo card($results[$i]['ID'],$results[$i]['Name'],$results[$i]['Icon'],$results[$i]['Description']);
                         }
                     ?>
