@@ -7,12 +7,11 @@ $latestVersion = $changelogs[0]['Version'];
 
 $xml = new SimpleXMLElement('<xml/>');
 
-$length = count($changelogs);
-for($i = 0; $i < $length;$i++){
-    $track = $xml->addChild($software->getName());
-    $track->addChild('update_time', $changelogs[$i]['Time']);
-    $track->addChild('version', $changelogs[$i]['Version']);
-    $track->addChild('content', $changelogs[$i]['Detail']);
+for ($i = 1; $i <= 8; ++$i) {
+    $track = $xml->addChild('item');
+    $track->addChild('update_time', "1999/99");
+    $track->addChild('version', "0.0");
+    $track->addChild('content', "nothing");
 }
 
 Header('Content-type: text/xml');
