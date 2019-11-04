@@ -21,10 +21,10 @@ for($i = 0; $i < $length;$i++){
     $time=$changelogs[$i]['Time'];
     $detail=$changelogs[$i]['Detail'];
     $detail = json_decode($detail);
-
+    $detail = join("\n",$detail);
     echo "<item>$name";
     echo "<version>$version</version>\n";
-    echo "<detail>join(\" \",$detail)</detail>\n";
+    echo "<detail></detail>\n";
     echo "<time>$time</time>\n";
 
 
