@@ -1,22 +1,17 @@
 <?php
-/* create a dom document with encoding utf8 */
-$domtree = new DOMDocument('1.0', 'UTF-8');
+header('Content-type: application/xml');
 include_once "SoftwareController.php";
-/* create the root element of the xml tree */
-$xmlRoot = $domtree->createElement("xml");
-/* append it to the document created */
-$xmlRoot = $domtree->appendChild($xmlRoot);
+echo "<rss version='2.0' xmlns:atom='changelogger.org'>\n";
+echo "<channel>\n";
 
-$currentTrack = $domtree->createElement("track");
-$currentTrack = $xmlRoot->appendChild($currentTrack);
+echo "<title>Demo RSS Feed</title>\n";
+echo "<description>RSS Description</description>\n";
+//echo "<link>http://www.mydomain.com</link>\n";
 
-/* you should enclose the following two lines in a cicle */
-$currentTrack->appendChild($domtree->createElement('path','song1.mp3'));
-$currentTrack->appendChild($domtree->createElement('title','title of song1.mp3'));
 
-$currentTrack->appendChild($domtree->createElement('path','song2.mp3'));
-$currentTrack->appendChild($domtree->createElement('title','title of song2.mp3'));
 
-/* get the xml printed */
-echo $domtree->saveXML();
+
+echo "</channel>\n";
+echo "</rss>\n";
+?>
 ?>
