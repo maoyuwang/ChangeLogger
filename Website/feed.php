@@ -1,5 +1,6 @@
 <?php
-
+Header('Content-type: text/xml');
+include_once "SoftwareController.php";
 $softwareID = $_GET["softwareID"];
 $software = new Software($softwareID);
 $changelogs = $software->getChangelogs();
@@ -11,6 +12,6 @@ for($i = 0; $i < $length;$i++){
     $track->addChild('update_time', $changelogs[$i]['Time']);
     $track->addChild('content', $changelogs[$i]['Detail']);
 }
-Header('Content-type: text/xml');
+
 echo $xml->asXML();
 ?>
