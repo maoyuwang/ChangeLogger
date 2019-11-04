@@ -93,8 +93,8 @@ EOD;
                 etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
             <p>
                 <a href="https://github.com/maoyuwang/changelogger" class="btn btn-primary my-2">GitHub</a>
-                <a data-toggle="modal"
-                   data-target="#SearchModel" class="btn btn-secondary my-2">Search</a>
+                <button data-toggle="modal"
+                   data-target="#SearchModel" class="btn btn-secondary my-2">Search</button>
             </p>
         </div>
     </section>
@@ -152,11 +152,11 @@ EOD;
             <div class="modal-body">
                 <div class="form-group">
                     <label for="InputKeyword">Keyword</label>
-                    <input name="keyword" type="email" class="form-control" id="InputKeyword" placeholder="Enter keyword to start search.">
+                    <input name="keyword" class="form-control" id="InputKeyword" placeholder="Enter keyword to start search.">
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" data-dismiss="modal">Search</button>
+                <button type="submit" class="btn btn-primary">Search</button>
             </div>
         </div>>
         </form>
