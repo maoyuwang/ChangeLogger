@@ -3,6 +3,7 @@ from Notifications import SMS
 from Notifications import Email
 import json
 def emailQueue():
+    # Process email notification queue.
     q = Queue("email")
     while(len(q)!=0):
         msg = json.loads(q.get())
@@ -13,6 +14,7 @@ def emailQueue():
         print((address,subject,content))
 
 def smsQueue():
+    # Process SMS notification queue.
     q = Queue("sms")
     while (len(q) != 0):
         msg = json.loads(q.get())

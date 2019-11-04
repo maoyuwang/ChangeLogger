@@ -5,11 +5,12 @@ import json
 
 class DB(object):
     def __init__(self):
+        # Init Database Connection.
         self.db = MySQL()
         self.db.connect()
 
     def getSoftware(self,id=None,name=None):
-
+        # Function for getting information for a specific software.
 
         if id != None:
             sql = """SELECT * FROM `softwares` WHERE ID = {}""".format(id)
@@ -25,12 +26,14 @@ class DB(object):
         return resultSet
 
     def getChangelogIDs(self,softwareID):
+        # Get all ids for a single software.
         sql = """SELECT ID FROM `data` WHERE SoftwareID = """ + str(softwareID)
         selectResults = self.db.select(sql)
         resultSet = [item[0] for item in selectResults]
         return resultSet
 
     def addChangelog(self,softwareID,changelog):
+        # add a piece of changelog to database.
         id = changelog['id']
         verison = changelog['version']
         time = changelog['time']
@@ -40,18 +43,21 @@ class DB(object):
         self.db.insert(sql,(id,softwareID,time,verison,content))
 
     def getSMSSubscribers(self,softwareID):
+        # Get the list of all SMS subscribers for specific software.
         sql = """SELECT phone FROM `phone` WHERE softwareID =""" + str(softwareID)
         selectResults = self.db.select(sql)
         resultSet = [item[0] for item in selectResults]
         return resultSet
 
     def getEmailSubscribers(self,softwareID):
+        # Get the list of all Email subscribers for specific software.
         sql = """SELECT email FROM `email` WHERE softwareID =""" + str(softwareID)
         selectResults = self.db.select(sql)
         resultSet = [item[0] for item in selectResults]
         return resultSet
 
     def addChangelogs(self,softwareID,changelogs):
+        # Add a list of changelogs to the database.
         params = [(changelog['id'],
                    softwareID,
                    changelog['time'],

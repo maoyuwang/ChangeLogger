@@ -1,15 +1,19 @@
+# MySQL Database Info
 DB_HOST="localhost"
 DB_PORT=3306
 DB_USER="root"
 DB_PASSWD=""
 DB_NAME=""
 
+# Email API Key
 EMAIL_KEY=""
 FROM_EMAIL=""
 
+# Twillio API Key
 SMS_ACCOUNT_ID=""
 SMS_AUTH_TOKEN=""
 
+# Redis Info
 REDIS_HOST="localhost"
 REDIS_PORT=6379
 REDIS_DB=0

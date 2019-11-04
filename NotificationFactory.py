@@ -6,10 +6,13 @@ import json
 class NotificationFactory(object):
     def __init__(self):
         self.db = DB()
+
+        # Create two queues for storing notifications.
         self.emailQueue = Queue('email')
         self.smsQueue = Queue('sms')
 
     def add(self, softwareID, changelogs):
+        # Add notification to both two queues.
         self.addEmailQueue(softwareID, changelogs)
         self.addSMSQueue(softwareID, changelogs)
 

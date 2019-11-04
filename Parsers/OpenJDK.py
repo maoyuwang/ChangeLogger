@@ -19,26 +19,26 @@ class OpenJDK(Parser):
         for x in Margins:
             UL=UL+x.find_all('ul')
 
-        # 新建空列表准备储存解析结果
+        # Start a new list to store all results dictionary.
         parseResult = list()
 
-        # 循环遍历所有的 h3 和 ul 标签
-        # 第一个是简介，跳过
+        # Loop all <h3> and <li>
+        # Skip the first element.
         for i in range(1, len(H2)):
-            # 找到当前 ul 里面所有的 li 标签
+            # find all <li>
             LI = UL[i].find_all("li")
 
-            # 新建一个字典储存本次更新的详情
+            # create a dict to store this udate info.
             record = dict()
             record['version'] = H2[i].text.replace("OpenJDK ", "").split(" ")[0]
-            # 没有时间
+            # If no time info is given
             record['time'] = "None"
             record['content'] = [li.text.replace("\n", "") for li in LI]
 
-            # 将本次更新添加至最终解析结果中去
+            # Append this record to the result list.
             parseResult.append(record)
 
-        # 返回最终解析结果
+        # return the final result.
         return (getJSONStr(parseResult))
 
 

@@ -18,25 +18,24 @@ class php7(Parser):
             UL=UL+x.find_all('ul')
             time_tmp=x.find('time',attrs={"class":"releasedate"})
             time.append(time_tmp["datetime"])
-        # 新建空列表准备储存解析结果
+        # New list for store result dicts.
         parseResult = list()
 
-        # 循环遍历所有的 h3 和 ul 标签
-        # 第一个是简介，跳过
+        # Loop all <h3>
         for i in range(0, len(H3)):
-            # 找到当前 ul 里面所有的 li 标签
+            # find all <li>
             LI = UL[i].find_all("li")
 
-            # 新建一个字典储存本次更新的详情
+            # Create a new dict for store info.
             record = dict()
             record['version'] = H3[i].text.split(" ")[-1]
             record['time'] = time[i]
             record['content'] = [li.text.replace("\n", "") for li in LI]
 
-            # 将本次更新添加至最终解析结果中去
+            # Append this update to the result list
             parseResult.append(record)
 
-        # 返回最终解析结果
+        # Return final result.
         return (getJSONStr(parseResult))
 
 

@@ -13,11 +13,13 @@ class MySQL():
         self.conn.close()
 
     def select(self,query):
+        # SELECT Query
         cursor = self.conn.cursor()
         cursor.execute(query)
         return cursor.fetchall()
 
     def insert(self,query,data : tuple):
+        # Insert/Update/Delete Query
         try:
             cursor = self.conn.cursor()
             cursor.execute(query,data)
@@ -27,6 +29,7 @@ class MySQL():
             self.conn.rollback()
 
     def insertMany(self,query,data):
+        # Insert Many data to db.
         try:
             cursor = self.conn.cursor()
             cursor.executemany(query,data)

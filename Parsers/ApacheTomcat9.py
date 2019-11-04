@@ -12,33 +12,35 @@ class ApacheTomcat(Parser):
         H3=content.find_all('h3')
         UL = content.find_all('div', attrs={"class": "text"})
         time=content.find_all('span', attrs={"style": "float: right;"})
-        # 新建空列表准备储存解析结果
+
+        # Create a new list to store results
         parseResult = list()
 
-        # 循环遍历所有的 h3 和 ul 标签
-        # 第一个是简介，跳过
+        # Loop all <h3> and <ul>
+        # Skip the first element because it's description text.
         for i in range(0, len(H3)):
-            # 找到当前 ul 里面所有的 li 标签
+            # find all <li> in this <ul> block.
             LI = UL[i].find_all("li")
-            #print(LI)
-            # 新建一个字典储存本次更新的详情
+
+            # Create dictionary to store this result.
             record = dict()
             record['version'] = H3[i].text
-            # 没有时间
+            # If no time information is given.
             if(i==0):
                 record['time'] = "None"
             else:
                 record['time'] = time[i-1].text
             record['content'] = [li.text.replace("\n", "").replace("       ","") for li in LI]
 
-            # 将本次更新添加至最终解析结果中去
+            # Append this update to the result list.
             parseResult.append(record)
 
-        # 返回最终解析结果
+        # return the final result.
         return (getJSONStr(parseResult))
 
 
 if __name__ == '__main__':
+    # Tests
     test = ApacheTomcat()
     test.start()
     test.join()

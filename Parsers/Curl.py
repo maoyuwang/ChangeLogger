@@ -10,15 +10,15 @@ class Curl(Parser):
         DIV = soup.find('div', attrs={"class": "contents"})
         H3 = DIV.find_all("h2")
         UL= DIV.find_all("ul")
-        # 新建空列表准备储存解析结果
+        # Creat an empty list to store results.
         parseResult = list()
 
-        # 循环遍历所有的 h3 和 ul 标签
+        # Loop all <h3> and <ul>
         for i in range(0, len(H3)):
-            # 找到当前 ul 里面所有的 li 标签
+            # Find all <li>
             LI = UL[i].find_all("li")
 
-            # 新建一个字典储存本次更新的详情
+            # Create a dict to store this update
             record = dict()
 
             record['version'] = H3[i].text.replace("Fixed in ", "").split(" ")[1]
@@ -30,10 +30,10 @@ class Curl(Parser):
 
             record['content'] = [li.text.replace("\n", "") for li in LI]
 
-            # 将本次更新添加至最终解析结果中去
+            # Append this update info to result list
             parseResult.append(record)
 
-        # 返回最终解析结果
+        # return the final result.
         return (getJSONStr(parseResult))
 
 
