@@ -150,9 +150,8 @@ EOD;
             <p class="float-right">
                 <a href="#">Back to top</a>
             </p>
-            <p>Album example is © Bootstrap, but please download and customize it for yourself!</p>
-            <p>New to Bootstrap? <a href="https://getbootstrap.com/">Visit the homepage</a> or read our <a
-                    href="/docs/4.3/getting-started/introduction/">getting started guide</a>.</p>
+            <p>ChangeLogger is the website for traking popular software changelogs.</p>
+            <p>Want to contribute? <a href="https://github.com/maoyuwang/changelogger">Visit the GitHub</a></p>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
