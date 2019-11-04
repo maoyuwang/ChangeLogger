@@ -1,9 +1,4 @@
 <?php
-$softwareID = $_GET["softwareID"];
-include_once "SoftwareController.php";
-$software = new Software($softwareID);
-$changelogs = $software->getChangelogs();
-$latestVersion = $changelogs[0]['Version'];
 $xml = new SimpleXMLElement('<xml/>');
 for ($i = 1; $i <= 8; ++$i) {
     $track = $xml->addChild('item');
@@ -12,5 +7,5 @@ for ($i = 1; $i <= 8; ++$i) {
     $track->addChild('content', "nothing");
 }
 Header('Content-type: text/xml');
-print($xml->asXML());
+echo $xml->asXML();
 ?>
