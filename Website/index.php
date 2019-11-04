@@ -93,7 +93,8 @@ EOD;
                 etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
             <p>
                 <a href="https://github.com/maoyuwang/changelogger" class="btn btn-primary my-2">GitHub</a>
-                <a href="/search.php" class="btn btn-secondary my-2">Search</a>
+                <a data-toggle="modal"
+                   data-target="#SearchModel" class="btn btn-secondary my-2">Search</a>
             </p>
         </div>
     </section>
@@ -136,3 +137,29 @@ EOD;
 
 </body>
 </html>
+
+<!-- Email Modal -->
+<div class="modal fade" id="SearchModel" tabindex="-1" role="dialog" aria-labelledby="SearchModelLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form target="_blank" action="/search.php">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="SearchModelLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="InputKeyword">Keyword</label>
+                    <input name="keyword" type="email" class="form-control" id="InputKeyword" placeholder="Enter keyword to start search.">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" data-dismiss="modal">Search</button>
+            </div>
+        </div>>
+        </form>
+        </div>
+    </div>
+</div>
