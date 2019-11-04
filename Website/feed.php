@@ -22,6 +22,7 @@ for($i = 0; $i < $length;$i++){
     $detail=$changelogs[$i]['Detail'];
     $detail = json_decode($detail);
     $detail = join("\n",$detail);
+    $detail = substr($detail,0,256);
     $detail = htmlspecialchars($detail);
     echo "<item>$name";
     echo "<version>$version</version>\n";
