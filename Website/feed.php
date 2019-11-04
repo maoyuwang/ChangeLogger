@@ -24,11 +24,7 @@ for($i = 0; $i < $length;$i++){
     echo "<item>$name";
     echo "<version>$version</version>\n";
     echo "<time>$time</time>\n";
-    for($j = 0; $j < count($detail); $j++)
-    {
-        $details=$detail[j];
-        echo "<details>$details</details>\n";
-    }
+    echo "<details>$detail</details>\n";
 
     echo "<atom:link href='https://changelogger.org/feed.php?$softwareID' rel='self' type='application/rss+xml'/>\n";
     echo "</item>\n";
