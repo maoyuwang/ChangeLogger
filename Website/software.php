@@ -104,7 +104,7 @@ EOD;
 
                     <div class="card flex-md-row mb-4 box-shadow h-md-250">
                         <img class="card-img-right flex-auto d-none d-md-block px-md-3" alt="<?php echo $software->getIcon() ?>" src="/img/icons/<?php echo $software->getIcon() ?>"
-                             style="height: 225px; width: 100%; display: block;" data-holder-rendered="true">
+                             style="height: 225px; width: 50%; display: block;" data-holder-rendered="true">
                         <div class="card-body d-flex flex-column align-items-start">
                             <h3 class="mb-0"><?php echo $software->getName() ?></h3>
                             <div class="mb-1 text-muted"> <?php echo $latestVersion ?> </div>
