@@ -8,7 +8,9 @@ function card($softwareID,$icon, $softwareName, $description)
     $str = <<<EOD
 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
-                            <a href="software.php?id=$softwareID"><img class="card-img-right flex-auto d-none d-md-block" src="img/icons/$icon" style="width: auto; height: auto;"></a>
+                            <a href="software.php?id=$softwareID">
+                                <img class="card-img-top px-md-3" alt="$icon" src="/img/icons/$icon" style="height: 225px; width: 100%; display: block;" data-holder-rendered="true">
+                            </a>
                         <div class="card-body">
                             <h3>$softwareName</h3>
                             <p class="card-text">$description</p>
