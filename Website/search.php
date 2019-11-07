@@ -100,7 +100,6 @@ EOD;
         </div>
     </div>
 
-
 </main>
 
 <footer class="text-muted">
