@@ -10,7 +10,7 @@ for($i = 0; $i < $length;$i++){
     $track = $xml->addChild('item');
     $track->addChild('version', $changelogs[$i]['Version']);
     $track->addChild('update_time', $changelogs[$i]['Time']);
-    $track->addChild('content', $changelogs[$i]['Detail']);
+    $track->addChild('content', htmlspecialchars($changelogs[$i]['Detail']));
 }
 
 echo $xml->asXML();
