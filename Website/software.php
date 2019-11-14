@@ -17,7 +17,7 @@ function changelogCard($version, $time, $detail)
         EOD;
 
     for ($i = 0; $i < count($detail); $i++) {
-        $detailStr = $detailStr . "<li class=\"list-group-item\">" . $detail[$i] . "</li>";
+        $detailStr = $detailStr . "<li class=\"list-group-item\">" . htmlspecialchars($detail[$i]) . "</li>";
     }
 
     $detailStr = $detailStr . "</ul>";
