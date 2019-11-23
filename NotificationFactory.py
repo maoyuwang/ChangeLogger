@@ -25,6 +25,7 @@ class NotificationFactory(object):
                 content = ""
                 for item in changelog['content']:
                     content = content + "{}\n".format(item)
+                content += "Unsubscribe: https://changelogger.org/unsubscribe.php?id={}&email={}".format(softwareID,email)
 
                 subject = """{0} has new version {1}""".format(softwareName, changelog['version'])
                 self.emailQueue.put(json.dumps({'address': str(email), 'subject': subject, 'content': content}))

@@ -12,6 +12,5 @@ for($i = 0; $i < $length;$i++){
     $track->addChild('update_time', $changelogs[$i]['Time']);
     $track->addChild('content', htmlspecialchars($changelogs[$i]['Detail']));
 }
-
 echo $xml->asXML();
 ?>

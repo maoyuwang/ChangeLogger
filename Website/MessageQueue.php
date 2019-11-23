@@ -1,5 +1,11 @@
 <?php
 include_once 'config.php';
+
+/**
+ * Class MessageQueue
+ * A queue for storing messages, support push() and pop()
+ * The messages in the queue will be processed by backend service.
+ */
 class MessageQueue
 {
     var $redis;

@@ -11,9 +11,7 @@ class Homepage
     function getAllSupportedSoftware()
     {
         $query = "SELECT * FROM softwares";
-        $args = Null;
-        $this->conn -> sql($query, $args, true);
-        return  $this->conn -> sql($query, $args, true);
+        return  $this->conn -> select($query);
     }
 }
 ?>

@@ -15,26 +15,16 @@ class db
         }
     }
     //translating sql sentence to array(if is select)
-    function sql($query,$args,$isselect){
+    function select($query){
         $ret=null;
-        $where="1";
-        if(!is_null($args)){
-            $where=$args;
-        }
-        $query="{$query} WHERE {$where}";
         $result = $this->conn->query($query);
-        if($isselect){
             if ($result->num_rows > 0) {
                 // output data of each row
                 while($row = $result->fetch_assoc()) {
                     $set[] = $row;
                     $ret=$set;
-                    #echo "\n";
                 }
-            } else {
-                #echo "0 results";
             }
-        }
         return $ret;
     }
 

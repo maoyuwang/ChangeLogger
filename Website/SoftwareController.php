@@ -35,29 +35,17 @@ class Software {
 
     //get all the changelogs of the software
     function getChangelogs() {
-        $query = "SELECT * FROM data";
-        $args = "SoftwareID = {$this->ID}";
-        $result = $this->database->sql($query, $args, true);
+        $query = "SELECT * FROM data WHERE SoftwareID = {$this->ID}";
+        $result = $this->database->select($query);
 
         if ($result==NULL) return "No details available.";
         else return $result;
     }
 
-    //get the changelog of a specific version
-    function getChangelog($version) {
-        $query = "SELECT Detail FROM data";
-        $args = "SoftwareID = {$this->ID} and Version = {$version}";
-        $result = $this->database->sql($query, $args, true);
-
-        if ($result==NULL) return "No details available.";
-        else return $result[0]["Detail"];
-    }
-
     //find and return the name.
     function findName() {
-        $query = "SELECT Name FROM softwares";
-        $args = "ID = {$this->ID}";
-        $result = $this->database->sql($query, $args, true);
+        $query = "SELECT Name FROM softwares WHERE ID = {$this->ID}";
+        $result = $this->database->select($query);
 
         if ($result==NULL) return NULL;
         else return $result[0]["Name"];
@@ -65,9 +53,8 @@ class Software {
 
     //find and return the description.
     function findDescription() {
-        $query = "SELECT Description FROM softwares";
-        $args = "ID = {$this->ID}";
-        $result = $this->database->sql($query, $args, true);
+        $query = "SELECT Description FROM softwares WHERE ID = {$this->ID}";
+        $result = $this->database->select($query);
 
         if ($result==NULL) return NULL;
         else return $result[0]["Description"];
@@ -75,12 +62,9 @@ class Software {
 
     //find and return the icon file name.
     function findIcon() {
-        $query = "SELECT Icon FROM softwares";
-        $args = "ID = {$this->ID}";
-        $result = $this->database->sql($query, $args, true);
+        $query = "SELECT Icon FROM softwares WHERE ID = {$this->ID}";
+        $result = $this->database->select($query);
 
         if ($result==NULL) return NULL;
         else return $result[0]["Icon"];
-    }
-    
-}?>
+    }}?>
