@@ -18,7 +18,7 @@ class Comments
 
     public function getComments()
     {
-        $sql = "SELECT * FROM comments";
+        $sql = "SELECT * FROM comments WHERE SoftwareID = $this->SoftwareID";
         return $this->db->select($sql);
     }
 
