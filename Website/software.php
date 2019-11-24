@@ -1,10 +1,37 @@
 <?php
 $softwareID = $_GET["id"];
 include_once "SoftwareController.php";
+include_once "Comments.php";
 $software = new Software($softwareID);
 $changelogs = $software->getChangelogs();
 $latestVersion = $changelogs[0]['Version'];
+$comments = new Comments($softwareID);
 
+function stars($num)
+{
+    $starElement = <<< EOD
+<span class="float-right"><i class="text-warning fa fa-star"></i></span>
+EOD;
+    $result = "";
+    for($i = 0;$i<$num;$i++){
+        $result = $result . $starElement . "\n";
+    }
+    return $result;
+}
+
+function comment($name,$starNum,$content){
+    $starStr = stars($starNum);
+    $result = <<< EOD
+<li class="media">
+    <div class="media-body">
+        <strong class="text-success">$name</strong>
+        $starStr
+        <p>$content</p>
+    </div>
+</li>
+EOD;
+    return $result;
+}
 
 function changelogCard($version, $time, $detail)
 {
@@ -59,6 +86,8 @@ EOD;
 
     <!-- Custom styles for this template -->
     <link href="css/album.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -103,7 +132,9 @@ EOD;
                 <div class="col-md-8">
 
                     <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                        <img class="card-img-right flex-auto d-none d-md-block px-md-3" alt="<?php echo $software->getIcon() ?>" src="/img/icons/<?php echo $software->getIcon() ?>"
+                        <img class="card-img-right flex-auto d-none d-md-block px-md-3"
+                             alt="<?php echo $software->getIcon() ?>"
+                             src="/img/icons/<?php echo $software->getIcon() ?>"
                              style="height: 225px; width: 50%; display: block;" data-holder-rendered="true">
                         <div class="card-body d-flex flex-column align-items-start">
                             <h3 class="mb-0"><?php echo $software->getName() ?></h3>
@@ -111,6 +142,13 @@ EOD;
                             <p class="card-text mb-auto"><?php echo $software->getDescription() ?></p>
                         </div>
 
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-outline-info btn-block" data-toggle="modal"
+                                    data-target="#CommentsModel">User Comments
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -226,6 +264,89 @@ EOD;
     </div>
 </div>
 
+<!-- Comments Modal -->
+<div class="modal fade" id="CommentsModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">User Comments</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+
+                <div class="row bootstrap snippets">
+                    <div class="col-md-12 col-md-offset-2 col-sm-12">
+                        <div class="comment-wrapper">
+                            <div class="panel panel-info">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="exampleFormControlSelect1">Comments</label>
+                                            <textarea id="content" class="form-control" placeholder="Write a comment..." rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Your name</label>
+                                                <input id="user" type="text" class="form-control" placeholder="Your name">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Ratings</label>
+                                                <select class="form-control" id="rating">
+                                                    <option>5</option>
+                                                    <option>4</option>
+                                                    <option>3</option>
+                                                    <option>2</option>
+                                                    <option>1</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" onclick="submitComment()" class="btn btn-outline-info pull-right btn-block">Post</button>
+                                    <div class="clearfix"></div>
+                                    <hr>
+                                    <ul class="media-list">
+                                        <?php
+                                        $allComments = $comments->getComments();
+                                        if ($allComments == null)
+                                        {
+                                            echo "No comments here.";
+                                        }
+                                        else{
+                                            foreach ( $allComments as $commentResult)
+                                            {
+                                                echo comment($commentResult['User'],$commentResult['Rating'],$commentResult['Comment']);
+                                            }
+                                        }
+
+                                        ?>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-primary">Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </html>
 
 <script>
@@ -257,4 +378,49 @@ EOD;
         alert("You have subscribed successfully.");
 
     }
+    
+    function submitComment() {
+        var content = document.getElementById('content').value;
+        var user = document.getElementById('user').value;
+        var rating = document.getElementById('rating').value;
+
+        if(content === "" || user === "")
+        {
+            alert("You must input your comment content and name to submit.");
+            return;
+        }
+
+        content = encodeURIComponent(content);
+        user = encodeURIComponent(user);
+
+        content = content.replace("'","''");
+        user =user.replace("'","''");
+        let args = "id=<?php echo $softwareID;?>" + "&user=" + user + "&content=" + content + "&rating=" + rating;
+        let url = "/comment.php";
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.open('POST', url, true);
+        httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        httpRequest.send(args);
+
+
+        alert("Succeed. Refresh the page to see changes.")
+    }
 </script>
+
+<style>
+    .comment-wrapper .panel-body {
+        max-height: 650px;
+        overflow: auto;
+    }
+
+    .comment-wrapper .media-list .media img {
+        width: 64px;
+        height: 64px;
+        border: 2px solid #e5e7e8;
+    }
+
+    .comment-wrapper .media-list .media {
+        border-bottom: 1px dashed #efefef;
+        margin-bottom: 25px;
+    }
+</style>
