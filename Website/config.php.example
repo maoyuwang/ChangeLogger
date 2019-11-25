@@ -1,0 +1,11 @@
+<?php
+global $config;
+$config['DB_SERVER'] = 'localhost';
+$config['DB_PORT'] = '3306';
+$config['DB_USER'] = 'root';
+$config['DB_PASSWORD'] = '';
+$config['DB_NAME'] = 'changelogger';
+
+$config['REDIS_HOST'] = 'localhost';
+$config['REDIS_PORT'] = 6379;
+?>

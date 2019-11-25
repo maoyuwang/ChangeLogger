@@ -23,10 +23,27 @@ A website for tracking changelogs.
 - PHP
 - BootStrap 4
 
-## Documentation
+## Development
+### Requirement
+- Redis Server
+- MySQL 5.x
+- Python 3
+- PHP 7.3.x
 
-See [wiki](https://github.com/maoyuwang/ChangeLogger/wiki).
-
+### Backend
+```bash
+git clone https://github.com/maoyuwang/ChangeLogger
+cd ChangeLogger
+python3 -m pip install -r requirements.txt
+mysql -u MYSQL_USERNAME -pMYSQL_PASSWORD < init.sql # Import database
+vim config.py.example # Config database and API keys
+```
+### Frontend
+```bash
+cd Website
+cp config.php.example config.php
+vim config.php # Config database and Redis
+```
 ## License
 
 The 3-Clause BSD License
