@@ -16,24 +16,38 @@ class Software {
         $this->icon = $this->findIcon();
     }
 
+    /**
+     * @return The id of the software.
+     */
     function getID() {
         return $this->ID;
     }
 
+    /**
+     * @return The name of the software.
+     */
     function getName() {
         return $this->name;
     }
 
+    /**
+     * @return The description of the software.
+     */
     function getDescription() {
         return $this->description;
     }
 
+    /**
+     * @return The icon filename of the software.
+     */
     function getIcon() {
         return $this->icon;
     }
 
 
-    //get all the changelogs of the software
+    /**
+     * @return All the changelogs of this software.
+     */
     function getChangelogs() {
         $query = "SELECT * FROM data WHERE SoftwareID = {$this->ID}";
         $result = $this->database->select($query);
@@ -42,7 +56,9 @@ class Software {
         else return $result;
     }
 
-    //find and return the name.
+    /**
+     * Get the software name from the database.
+     */
     function findName() {
         $query = "SELECT Name FROM softwares WHERE ID = {$this->ID}";
         $result = $this->database->select($query);
@@ -51,7 +67,9 @@ class Software {
         else return $result[0]["Name"];
     }
 
-    //find and return the description.
+    /**
+     * Get the description from the database.
+     */
     function findDescription() {
         $query = "SELECT Description FROM softwares WHERE ID = {$this->ID}";
         $result = $this->database->select($query);
@@ -60,7 +78,9 @@ class Software {
         else return $result[0]["Description"];
     }
 
-    //find and return the icon file name.
+    /**
+     * Get the icon from the database.
+     */
     function findIcon() {
         $query = "SELECT Icon FROM softwares WHERE ID = {$this->ID}";
         $result = $this->database->select($query);

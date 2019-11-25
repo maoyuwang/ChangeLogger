@@ -1,5 +1,8 @@
 # a data structure for storing software information.
 class Software(object):
+    """
+    A struct to represent a software.
+    """
     def __init__(self,ID,Name,Description,Icon):
         self.ID = ID
         self.Name = Name

@@ -4,6 +4,9 @@ import json
 
 
 class NotificationFactory(object):
+    """
+    Create different types of notifications and append to the queue.
+    """
     def __init__(self):
         self.db = DB()
 
@@ -17,6 +20,12 @@ class NotificationFactory(object):
         self.addSMSQueue(softwareID, changelogs)
 
     def addEmailQueue(self, softwareID, changeloggs):
+        """
+        Add notification to email queue.
+        :param softwareID: The id of the software.
+        :param changeloggs: The changelogs data.
+        :return:
+        """
         emails = self.db.getEmailSubscribers(softwareID)
         softwareName = self.db.getSoftware(id=softwareID)[0].Name
         for email in emails:
@@ -31,6 +40,12 @@ class NotificationFactory(object):
                 self.emailQueue.put(json.dumps({'address': str(email), 'subject': subject, 'content': content}))
 
     def addSMSQueue(self, softwareID, changeloggs):
+        """
+        Add the notification to the SMS queue.
+        :param softwareID: The id of the software.
+        :param changeloggs: The changelog data.
+        :return:
+        """
         phones = self.db.getSMSSubscribers(softwareID)
         softwareName = self.db.getSoftware(id=softwareID)[0].Name
         for phone in phones:

@@ -1,8 +1,17 @@
 <?php
 include_once 'config.php';
+/**
+ * Class db
+ * The abstraction of database operations.
+ */
 class db
 {
     var $conn;
+
+    /**
+     * db constructor.
+     * Create a connection to the database.
+     */
     function __construct()
     {
         global $config;
@@ -14,7 +23,11 @@ class db
             die( print_r( sqlsrv_errors(), true));
         }
     }
-    //translating sql sentence to array(if is select)
+
+    /**
+     * @param $query The query string to execute.
+     * @return null
+     */
     function select($query){
         $ret=null;
         $result = $this->conn->query($query);
@@ -28,6 +41,10 @@ class db
         return $ret;
     }
 
+    /**
+     * @param $sql The query string to execute.
+     * @return bool True/False if the execution is successful.
+     */
     function insert($sql){
         if ($this->conn->query($sql) === TRUE) {
             return true;
@@ -37,6 +54,9 @@ class db
         }
     }
 
+    /**
+     * Close the database connection.
+     */
     function close(){
         CloseCon($this->conn);
     }

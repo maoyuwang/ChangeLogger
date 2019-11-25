@@ -19,10 +19,16 @@ class MessageQueue
         $this->Queuekey = $key;
     }
 
+    /**
+     * @param $value The value to be added to the queue.
+     */
     function put($value){
         $this->redis->rPush($this->Queuekey,$value);
     }
 
+    /**
+     * Pop a value from the queue.
+     */
     function get(){
         return $this->redis->blPop($this->Queuekey,10);
     }

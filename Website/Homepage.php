@@ -8,6 +8,10 @@ class Homepage
     {
         $this->conn = new db();
     }
+
+    /**
+     * @return all software information data for presenting the homepage.
+     */
     function getAllSupportedSoftware()
     {
         $query = "SELECT * FROM softwares";

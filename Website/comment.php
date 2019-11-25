@@ -1,6 +1,9 @@
 <?php
 include_once "Comments.php";
 
+/**
+ * Receive the comment and add to the database.
+ */
 $softwareID = $_POST["id"];
 $user = $_POST["user"];
 $content = $_POST["content"];

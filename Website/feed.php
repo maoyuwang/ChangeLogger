@@ -1,4 +1,7 @@
 <?php
+/**
+ * Show the RSS page.
+ */
 Header('Content-type: text/xml');
 $xml = new SimpleXMLElement('<xml/> ');
 include_once "SoftwareController.php";
