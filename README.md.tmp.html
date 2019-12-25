@@ -1,0 +1,76 @@
+<h1>ChangeLogger</h1>
+
+<h2>Description</h2>
+
+<p>A website for tracking changelogs.</p>
+
+<h2>Screenshots</h2>
+
+<h3>Homepage</h3>
+
+<p><img src="Images/index.png" alt="flow" title="" /></p>
+
+<h3>Software Page</h3>
+
+<p><img src="Images/page.png" alt="flow" title="" /></p>
+
+<h3>Subscribe Page</h3>
+
+<p><img src="Images/subscribe.png" alt="flow" title="" /></p>
+
+<h2>Functionality</h2>
+
+<ul>
+<li>Parse update logs from softwares' website.</li>
+<li>Store update logs to database.</li>
+<li>A web page to show details of softwares.</li>
+<li>A user center that allow users to subscribe.</li>
+<li>Integrate RSS feed/Mail Notification / Text Notification / Slack Bot / Telegram Bot.</li>
+</ul>
+
+<h2>Running Flow</h2>
+
+<p><img src="Images/flow.png" alt="flow" title="" /></p>
+
+<h2>Tech Stack</h2>
+
+<ul>
+<li>Python3 + BeautifulSoup4</li>
+<li>MySQL</li>
+<li>Redis</li>
+<li>PHP</li>
+<li>BootStrap 4</li>
+</ul>
+
+<h2>Development</h2>
+
+<h3>Requirement</h3>
+
+<ul>
+<li>Redis Server</li>
+<li>MySQL 5.x</li>
+<li>Python 3</li>
+<li>PHP 7.3.x</li>
+</ul>
+
+<h3>Backend</h3>
+
+<p><code>bash
+git clone https://github.com/maoyuwang/ChangeLogger
+cd ChangeLogger
+python3 -m pip install -r requirements.txt
+mysql -u MYSQL_USERNAME -pMYSQL_PASSWORD &lt; init.sql # Import database
+vim config.py.example # Config database and API keys
+</code></p>
+
+<h3>Frontend</h3>
+
+<p><code>bash
+cd Website
+cp config.php.example config.php
+vim config.php # Config database and Redis
+</code></p>
+
+<h2>License</h2>
+
+<p>The 3-Clause BSD License</p>

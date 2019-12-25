@@ -3,6 +3,19 @@
 
 A website for tracking changelogs.
 
+## Screenshots
+### Homepage
+
+![flow](Images/index.png)
+
+### Software Page
+
+![flow](Images/page.png)
+
+### Subscribe Page
+
+![flow](Images/subscribe.png)
+
 ## Functionality
 
 - Parse update logs from softwares' website.
@@ -13,7 +26,7 @@ A website for tracking changelogs.
 
 ## Running Flow
 
-![flow](flow.png)
+![flow](Images/flow.png)
 
 ## Tech Stack
 
